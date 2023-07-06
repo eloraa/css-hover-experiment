@@ -50,22 +50,32 @@
         border: 2px solid black;
       }
       .__root .button span {
+        position: relative;
+        z-index: 1;
         display: block;
         background-color: black;
         color: #e42013;
         padding: 1.52rem 5rem;
-        transition: transform 200ms ease;
+        transition: transform 200ms ease, border-color 200ms ease;
       }
       .__root .button .inner_ {
         position: absolute;
         inset: 0;
+      }
+      .__root .button:last-child .inner_ {
+        background: linear-gradient(to right, #e42013 0 20%, rgba(255, 255, 255, 0) 10%), black;
+        background-position: top;
+        background-size: 12px 100%;
+        background-repeat: repeat-x;
+        border-color: #e42013;
       }
       .__root .button:first-child:hover span {
         transform: translateY(-10px);
       }
       @media (hover: hover) {
         .__root .button:last-child:hover span {
-          transform: translateY(-10px);
+          transform: translateY(-15px) scaleX(0.995);
+          border-color: #e42013;
         }
       }
       @media screen and (min-width: 640px) {
