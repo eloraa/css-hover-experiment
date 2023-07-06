@@ -4,12 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Hover Practice</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@700&display=swap" rel="stylesheet" />
 
     <style>
       * {
         box-sizing: border-box;
         margin: 0;
         padding: 0;
+      }
+      html {
+        font-size: 100%;
+        -webkit-font-smoothing: antialiased;
+        -webkit-text-size-adjust: 100%;
       }
 
       html,
@@ -20,16 +28,74 @@
       }
 
       body {
-        font-family: monospace;
+        font-family: 'Roboto Mono', monospace;
       }
 
       .__root {
         display: grid;
         place-content: center;
+        gap: 20px;
+        background-color: #e42013;
+      }
+
+      .__root .button {
+        position: relative;
+        font-weight: 700;
+        font-size: 1rem;
+        cursor: pointer;
+      }
+      .__root .button .inner_,
+      .__root .button span {
+        border-radius: 9999px;
+        border: 2px solid black;
+      }
+      .__root .button span {
+        display: block;
+        background-color: black;
+        color: #e42013;
+        padding: 1.52rem 5rem;
+        transition: transform 200ms ease;
+      }
+      .__root .button .inner_ {
+        position: absolute;
+        inset: 0;
+      }
+      .__root .button:first-child:hover span {
+        transform: translateY(-10px);
+      }
+      @media (hover: hover) {
+        .__root .button:last-child:hover span {
+          transform: translateY(-10px);
+        }
+      }
+      @media screen and (min-width: 640px) {
+        .__root {
+          grid-auto-flow: column;
+        }
+      }
+
+      .info {
+        position: absolute;
+        bottom: 50px;
+        left: 0;
+        right: 0;
+        text-align: center;
+        font-size: 0.85rem;
+        padding: 0 2rem;
       }
     </style>
   </head>
   <body>
-    <div class="__root">hello world</div>
+    <div class="__root">
+      <div class="button">
+        <div class="inner_"></div>
+        <span>Signin</span>
+      </div>
+      <div class="button">
+        <div class="inner_"></div>
+        <span>Signup</span>
+      </div>
+    </div>
+    <div class="info">the second button's hover interaction should only work on desktop devices with mouse interaction</div>
   </body>
 </html>
